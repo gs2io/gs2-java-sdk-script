@@ -1,13 +1,28 @@
+/*
+ * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package io.gs2.script.control;
 
-import io.gs2.control.Gs2BasicRequest;
+import org.json.JSONObject;
+import java.util.List;
 import io.gs2.script.Gs2Script;
+import io.gs2.control.Gs2BasicRequest;
 
 /**
- * スクリプトの更新リクエスト。
- * 
  * @author Game Server Services, Inc.
- *
  */
 @SuppressWarnings("serial")
 public class UpdateScriptRequest extends Gs2BasicRequest<UpdateScriptRequest> {
@@ -16,63 +31,66 @@ public class UpdateScriptRequest extends Gs2BasicRequest<UpdateScriptRequest> {
 		public static final String FUNCTION = "UpdateScript";
 	}
 
-	/** スクリプト名 */
-	String scriptName;
+	/** スクリプトの名前を指定します。 */
+	private String scriptName;
+
 	/** 説明文 */
-	String description;
+	private String description;
+
 	/** Luaスクリプト */
-	String script;
+	private String script;
+
 
 	/**
-	 * スクリプト名を取得。
-	 * 
-	 * @return スクリプト名
+	 * スクリプトの名前を指定します。を取得
+	 *
+	 * @return スクリプトの名前を指定します。
 	 */
 	public String getScriptName() {
 		return scriptName;
 	}
-	
+
 	/**
-	 * スクリプト名を設定。
-	 * 
-	 * @param scriptName スクリプト名
+	 * スクリプトの名前を指定します。を設定
+	 *
+	 * @param scriptName スクリプトの名前を指定します。
 	 */
 	public void setScriptName(String scriptName) {
 		this.scriptName = scriptName;
 	}
-	
+
 	/**
-	 * スクリプト名を設定。
-	 * 
-	 * @param scriptName スクリプト名
+	 * スクリプトの名前を指定します。を設定
+	 *
+	 * @param scriptName スクリプトの名前を指定します。
 	 * @return this
 	 */
 	public UpdateScriptRequest withScriptName(String scriptName) {
 		setScriptName(scriptName);
 		return this;
 	}
-	
+
 	/**
-	 * 説明文を取得。
-	 * 
+	 * 説明文を取得
+	 *
 	 * @return 説明文
 	 */
 	public String getDescription() {
 		return description;
 	}
-	
+
 	/**
-	 * 説明文を設定。
-	 * 
+	 * 説明文を設定
+	 *
 	 * @param description 説明文
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	/**
-	 * 説明文を設定。
-	 * 
+	 * 説明文を設定
+	 *
 	 * @param description 説明文
 	 * @return this
 	 */
@@ -82,26 +100,26 @@ public class UpdateScriptRequest extends Gs2BasicRequest<UpdateScriptRequest> {
 	}
 
 	/**
-	 * Luaスクリプトを取得。
-	 * 
+	 * Luaスクリプトを取得
+	 *
 	 * @return Luaスクリプト
 	 */
 	public String getScript() {
 		return script;
 	}
-	
+
 	/**
-	 * Luaスクリプトを設定。
-	 * 
+	 * Luaスクリプトを設定
+	 *
 	 * @param script Luaスクリプト
 	 */
 	public void setScript(String script) {
 		this.script = script;
 	}
-	
+
 	/**
-	 * Luaスクリプトを設定。
-	 * 
+	 * Luaスクリプトを設定
+	 *
 	 * @param script Luaスクリプト
 	 * @return this
 	 */
@@ -109,4 +127,5 @@ public class UpdateScriptRequest extends Gs2BasicRequest<UpdateScriptRequest> {
 		setScript(script);
 		return this;
 	}
+
 }
