@@ -61,14 +61,16 @@ public class Gs2ScriptClient extends AbstractGs2Client<Gs2ScriptClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public CreateScriptResult createScript(CreateScriptRequest request) {
 
 		ObjectNode body = JsonNodeFactory.instance.objectNode()
-				.put("description", request.getDescription())
 				.put("name", request.getName())
+				.put("description", request.getDescription())
 				.put("script", request.getScript());
 
 		HttpPost post = createHttpPost(
@@ -78,6 +80,9 @@ public class Gs2ScriptClient extends AbstractGs2Client<Gs2ScriptClient> {
 				CreateScriptRequest.Constant.MODULE,
 				CreateScriptRequest.Constant.FUNCTION,
 				body.toString());
+        if(request.getRequestId() != null) {
+            post.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(post, CreateScriptResult.class);
@@ -90,11 +95,12 @@ public class Gs2ScriptClient extends AbstractGs2Client<Gs2ScriptClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 */
 
 	public void deleteScript(DeleteScriptRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/script/" + (request.getScriptName() == null ? "null" : request.getScriptName()) + "";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/script/" + (request.getScriptName() == null || request.getScriptName().equals("") ? "null" : request.getScriptName()) + "";
 
 
 
@@ -104,6 +110,9 @@ public class Gs2ScriptClient extends AbstractGs2Client<Gs2ScriptClient> {
 				ENDPOINT,
 				DeleteScriptRequest.Constant.MODULE,
 				DeleteScriptRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            delete.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		doRequest(delete, null);
@@ -116,7 +125,9 @@ public class Gs2ScriptClient extends AbstractGs2Client<Gs2ScriptClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public DescribeScriptResult describeScript(DescribeScriptRequest request) {
@@ -137,6 +148,9 @@ public class Gs2ScriptClient extends AbstractGs2Client<Gs2ScriptClient> {
 				ENDPOINT,
 				DescribeScriptRequest.Constant.MODULE,
 				DescribeScriptRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, DescribeScriptResult.class);
@@ -149,12 +163,14 @@ public class Gs2ScriptClient extends AbstractGs2Client<Gs2ScriptClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public GetScriptResult getScript(GetScriptRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/script/" + (request.getScriptName() == null ? "null" : request.getScriptName()) + "";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/script/" + (request.getScriptName() == null || request.getScriptName().equals("") ? "null" : request.getScriptName()) + "";
 
 
 
@@ -164,6 +180,9 @@ public class Gs2ScriptClient extends AbstractGs2Client<Gs2ScriptClient> {
 				ENDPOINT,
 				GetScriptRequest.Constant.MODULE,
 				GetScriptRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, GetScriptResult.class);
@@ -176,7 +195,9 @@ public class Gs2ScriptClient extends AbstractGs2Client<Gs2ScriptClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public UpdateScriptResult updateScript(UpdateScriptRequest request) {
@@ -186,12 +207,15 @@ public class Gs2ScriptClient extends AbstractGs2Client<Gs2ScriptClient> {
         if(request.getDescription() != null) body.put("description", request.getDescription());
         if(request.getScript() != null) body.put("script", request.getScript());
 		HttpPut put = createHttpPut(
-				Gs2Constant.ENDPOINT_HOST + "/script/" + (request.getScriptName() == null ? "null" : request.getScriptName()) + "",
+				Gs2Constant.ENDPOINT_HOST + "/script/" + (request.getScriptName() == null || request.getScriptName().equals("") ? "null" : request.getScriptName()) + "",
 				credential,
 				ENDPOINT,
 				UpdateScriptRequest.Constant.MODULE,
 				UpdateScriptRequest.Constant.FUNCTION,
 				body.toString());
+        if(request.getRequestId() != null) {
+            put.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(put, UpdateScriptResult.class);
