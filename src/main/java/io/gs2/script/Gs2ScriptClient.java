@@ -18,7 +18,9 @@ package io.gs2.script;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import io.gs2.model.Region;
 import io.gs2.util.EncodingUtil;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpDelete;
@@ -55,6 +57,26 @@ public class Gs2ScriptClient extends AbstractGs2Client<Gs2ScriptClient> {
 		super(credential);
 	}
 
+	/**
+	 * コンストラクタ。
+	 *
+	 * @param credential 認証情報
+	 * @param region リージョン
+	 */
+	public Gs2ScriptClient(IGs2Credential credential, Region region) {
+		super(credential, region);
+	}
+
+	/**
+	 * コンストラクタ。
+	 *
+	 * @param credential 認証情報
+	 * @param region リージョン
+	 */
+	public Gs2ScriptClient(IGs2Credential credential, String region) {
+		super(credential, region);
+	}
+
 
 	/**
 	 * スクリプトを新規作成します<br>
@@ -70,8 +92,8 @@ public class Gs2ScriptClient extends AbstractGs2Client<Gs2ScriptClient> {
 
 		ObjectNode body = JsonNodeFactory.instance.objectNode()
 				.put("name", request.getName())
-				.put("description", request.getDescription())
 				.put("script", request.getScript());
+        if(request.getDescription() != null) body.put("description", request.getDescription());
 
 		HttpPost post = createHttpPost(
 				Gs2Constant.ENDPOINT_HOST + "/script",
@@ -203,7 +225,6 @@ public class Gs2ScriptClient extends AbstractGs2Client<Gs2ScriptClient> {
 	public UpdateScriptResult updateScript(UpdateScriptRequest request) {
 
 		ObjectNode body = JsonNodeFactory.instance.objectNode();
-
         if(request.getDescription() != null) body.put("description", request.getDescription());
         if(request.getScript() != null) body.put("script", request.getScript());
 		HttpPut put = createHttpPut(

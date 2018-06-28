@@ -31,44 +31,15 @@ public class CreateScriptRequest extends Gs2BasicRequest<CreateScriptRequest> {
 		public static final String FUNCTION = "CreateScript";
 	}
 
-	/** 説明文 */
-	private String description;
-
 	/** スクリプトの名前 */
 	private String name;
+
+	/** 説明文 */
+	private String description;
 
 	/** Luaスクリプト */
 	private String script;
 
-
-	/**
-	 * 説明文を取得
-	 *
-	 * @return 説明文
-	 */
-	public String getDescription() {
-		return description;
-	}
-
-	/**
-	 * 説明文を設定
-	 *
-	 * @param description 説明文
-	 */
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	/**
-	 * 説明文を設定
-	 *
-	 * @param description 説明文
-	 * @return this
-	 */
-	public CreateScriptRequest withDescription(String description) {
-		setDescription(description);
-		return this;
-	}
 
 	/**
 	 * スクリプトの名前を取得
@@ -96,6 +67,35 @@ public class CreateScriptRequest extends Gs2BasicRequest<CreateScriptRequest> {
 	 */
 	public CreateScriptRequest withName(String name) {
 		setName(name);
+		return this;
+	}
+
+	/**
+	 * 説明文を取得
+	 *
+	 * @return 説明文
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * 説明文を設定
+	 *
+	 * @param description 説明文
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * 説明文を設定
+	 *
+	 * @param description 説明文
+	 * @return this
+	 */
+	public CreateScriptRequest withDescription(String description) {
+		setDescription(description);
 		return this;
 	}
 

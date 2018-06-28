@@ -33,23 +33,23 @@ public class Script implements Serializable {
 	/** スクリプトGRN */
 	private String scriptId;
 
-	/** 作成日時(エポック秒) */
-	private Integer createAt;
+	/** オーナーID */
+	private String ownerId;
 
 	/** スクリプト名 */
 	private String name;
 
+	/** 説明文 */
+	private String description;
+
 	/** スクリプトデータ */
 	private String script;
 
-	/** オーナーID */
-	private String ownerId;
+	/** 作成日時(エポック秒) */
+	private Integer createAt;
 
 	/** 最終更新日時(エポック秒) */
 	private Integer updateAt;
-
-	/** 説明文 */
-	private String description;
 
 
 	/**
@@ -71,21 +71,21 @@ public class Script implements Serializable {
 	}
 
 	/**
-	 * 作成日時(エポック秒)を取得
+	 * オーナーIDを取得
 	 *
-	 * @return 作成日時(エポック秒)
+	 * @return オーナーID
 	 */
-	public Integer getCreateAt() {
-		return createAt;
+	public String getOwnerId() {
+		return ownerId;
 	}
 
 	/**
-	 * 作成日時(エポック秒)を設定
+	 * オーナーIDを設定
 	 *
-	 * @param createAt 作成日時(エポック秒)
+	 * @param ownerId オーナーID
 	 */
-	public void setCreateAt(Integer createAt) {
-		this.createAt = createAt;
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
 	}
 
 	/**
@@ -107,6 +107,24 @@ public class Script implements Serializable {
 	}
 
 	/**
+	 * 説明文を取得
+	 *
+	 * @return 説明文
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * 説明文を設定
+	 *
+	 * @param description 説明文
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
 	 * スクリプトデータを取得
 	 *
 	 * @return スクリプトデータ
@@ -125,21 +143,21 @@ public class Script implements Serializable {
 	}
 
 	/**
-	 * オーナーIDを取得
+	 * 作成日時(エポック秒)を取得
 	 *
-	 * @return オーナーID
+	 * @return 作成日時(エポック秒)
 	 */
-	public String getOwnerId() {
-		return ownerId;
+	public Integer getCreateAt() {
+		return createAt;
 	}
 
 	/**
-	 * オーナーIDを設定
+	 * 作成日時(エポック秒)を設定
 	 *
-	 * @param ownerId オーナーID
+	 * @param createAt 作成日時(エポック秒)
 	 */
-	public void setOwnerId(String ownerId) {
-		this.ownerId = ownerId;
+	public void setCreateAt(Integer createAt) {
+		this.createAt = createAt;
 	}
 
 	/**
@@ -158,24 +176,6 @@ public class Script implements Serializable {
 	 */
 	public void setUpdateAt(Integer updateAt) {
 		this.updateAt = updateAt;
-	}
-
-	/**
-	 * 説明文を取得
-	 *
-	 * @return 説明文
-	 */
-	public String getDescription() {
-		return description;
-	}
-
-	/**
-	 * 説明文を設定
-	 *
-	 * @param description 説明文
-	 */
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 }
